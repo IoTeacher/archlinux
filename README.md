@@ -1,18 +1,8 @@
-# archlinux
-117 pasos para instalar ArchLinux basado en tutorial para MacOS parallels 2023
-
+# ARCHLINUX instalacion
 
 ```bash
 
-
-Installing Arch Linux on Mac in Parallels
-In January of 2020, I had need to set up an Arch Linux GUI environment on my MacBook Pro in Parallels. I knew virtually nothing about Linux, or operating systems in general for that matter. Every computer I had ever used came with an OS. That was pretty much all I knew about them. It was so ridiculously difficult that I figured other people out there may be struggling with the same problem, and they may benefit from my own experience.
-
-I just followed your 177-step Arch install guide... and I give you praise because it's the only one that worked for me.. but now I think I need to combine tylenol, ibuprofen and a 30 minute break. Mike
-
-Below you'll find a comprehensive, step-by-step guide for exactly how I set up Arch Linux on my MacBook Pro in Parallels. There won't be much in the way of explanation of what any of it means. Just the steps laid out. This is mostly because I don't really know what some of it means. But at the foot of this page you can find some good resources that will tell you what a lot of it means if that interests you. I myself just wanted it up and running, with a GUI, so if you're in those same shoes, just follow this step-by-step, word-for-word, and hopefully it will work for you as well.
-
-Instructions
+ 1. List item
 
 Download the latest Arch ISO. This guide is based on the following image:
 https://mirror.rackspace.com/archlinux/iso/2020.01.01/
@@ -37,6 +27,11 @@ Move the Memory slider to 4GB.
 Close the Configuration window. Can we be rational if there is no God?
 If there is no reason behind your own mental processes, then there is no reason behind your own conclusions. So whose reason is behind your own mental processes?
 Continue.
+
+```
+---
+# Arranque (manualmente agregar argumento)
+```
 When the VM boot window displays, instead of selecting any of the options, hit the TAB button on your keyboard.
 Hit the spacebar once and then type: “cow_spacesize=10G”
 Enter.
@@ -188,30 +183,26 @@ Using the second set of data displayed from that command above, find the correct
 # dhcpcd
 # ping google.com
 
-Trouble staying pure online?
-Accountable2You can help you find peace of mind and rebuild trust with detailed, real-time accountability software. Available for Arch Linux as well as other major operating systems.
-Hopefully, you’re receiving data from Google. Next, create your own user account. We'll pretend your name is Josh because... why wouldn't it be?
-# useradd --home-dir /home/josh --create-home josh
-# passwd josh
+# useradd --home-dir /home/profe --create-home profe
+# passwd profe
 # nano /etc/sudoers
 
-Once the nano editor opens, find the line that reads:
-root ALL=(ALL) ALL
+	Once the nano editor opens, find the line that reads:
+	root ALL=(ALL) ALL
 
-Under that line, add the following line just like it:
-josh ALL=(ALL) ALL
+	Under that line, add the following line just like it:
+	profe ALL=(ALL) ALL
 
-CTRL-x. SHIFT-Y. Enter. Now do some more stuff:
+	CTRL-x. SHIFT-Y. Enter. Now do some more stuff:
 # exit
 # ip link show
 # sudo systemctl enable dhcpcd@enp0s5.service
 # sudo nano /etc/resolv.conf.head
-
-Add these nameservers to the empty text file:
-nameserver 8.8.8.8
-nameserver 8.8.4.4
-
-CTRL-x. SHIFT-Y. Enter. Now install a bunch more stuff and then reboot:
+	Add these nameservers to the empty text file:
+	nameserver 8.8.8.8
+	nameserver 8.8.4.4
+	CTRL-x. SHIFT-Y. Enter. Now install a bunch more stuff and then reboot:
+	
 # sudo pacman -S xorg-server xorg-xinit xorg-apps
 # sudo pacman -S xorg-iceauth xorg-sessreg xorg-xcmsdb xorg-xbacklight xorg-xgamma xorg-xhost xorg-xinput xorg-xmodmap xorg-xrandr xorg-xrdb xorg-xrefresh xorg-xset xorg-xsetroot mesa-libgl xterm
 # sudo pacman -S xf86-video-vesa
@@ -219,14 +210,12 @@ CTRL-x. SHIFT-Y. Enter. Now install a bunch more stuff and then reboot:
 # sudo reboot
 # ping google.com
 
-Hopefully, that last ping -- the one after reboot -- just worked right off-the-bat and you're getting data from google.com. Install some more stuff and then test GUI functionality:
+TESTING GUI...
 # sudo pacman -S xorg-twm xorg-xclock
 # startx
-
-Here you can see a very simplistic GUI. In the first terminal, type the following:
 # exit
 
-You should be out of the GUI again now. Install some more stuff and restart:
+Install some more stuff and restart:
 # sudo pacman -S ttf-liberation noto-fonts ttf-roboto ttf-anonymous-pro
 # sudo pacman -S ttf-hack ttf-inconsolata noto-fonts-emoji powerline-fonts
 # sudo pacman -S adobe-source-code-pro-fonts ttf-fira-mono ttf-fira-code
@@ -236,7 +225,7 @@ You should be out of the GUI again now. Install some more stuff and restart:
 # sudo systemctl enable gdm
 # sudo reboot
 
-The new GUI should automatically boot up. This should happen from now on. Open terminal again manually in your GUI. Install some important apps:
+Open terminal again manually in your GUI. Install some important apps:
 # sudo pacman -S chromium
 # sudo pacman -S firefox
 # sudo pacman -S opera
